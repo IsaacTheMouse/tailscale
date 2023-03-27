@@ -88,9 +88,10 @@ func (m *manualCertManager) TLSConfig() *tls.Config {
 }
 
 func (m *manualCertManager) getCertificate(hi *tls.ClientHelloInfo) (*tls.Certificate, error) {
-	if hi.ServerName != m.hostname {
-		return nil, fmt.Errorf("cert mismatch with hostname: %q", hi.ServerName)
-	}
+	//将与域名验证相关的内容删除或注释
+	//if hi.ServerName != m.hostname {
+	//	return nil, fmt.Errorf("cert mismatch with hostname: %q", hi.ServerName)
+	//}
 
 	// Return a shallow copy of the cert so the caller can append to its
 	// Certificate field.
